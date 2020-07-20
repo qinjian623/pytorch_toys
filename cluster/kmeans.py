@@ -3,8 +3,8 @@ import warnings
 
 
 def cosine_distance(obs, centers):
-    obs_norm = obs / obs.norm()
-    centers_norm = centers / centers.norm()
+    obs_norm = obs / obs.norm(dim=1, keepdim=True)
+    centers_norm = centers / centers.norm(dim=1, keepdim=True)
     cos = torch.matmul(obs_norm, centers_norm.transpose(1, 0))
     return 1 - cos
 
