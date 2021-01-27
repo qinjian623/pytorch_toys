@@ -1,0 +1,8 @@
+* List of toys
+  1. [[./cluster/kmeans.py][K-means && Product Quantization]]
+  2. [[./loss/distill.py][Distill Loss]]
+  3. [[./official_quantization/main.py][Pytorch Offical Post Quantization Example]]
+  4. [[./post_quant][Fake Quantization]]
+  5. [[./post_quant/fusion.py][BatchNorm Fusion]]
+  
+
