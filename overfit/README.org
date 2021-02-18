@@ -1,0 +1,25 @@
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+#+TITLE: Noiser Testing
+#+AUTHOR: Jian QIN
+
+* Noiser(anchor=True)
+
+** CIFAR10
+ #+CAPTION: Top 1 Accuracy on CIFAR10
+ | No. HP Setting               | baseline | with Noise(anchor=True) |
+ |------------------------------+----------+-------------------------|
+ | 0(aug, weak ood)             |    67.65 |                   76.38 |
+ | 1(aug)                       |    79.41 |                    82.5 |
+ | 2(no aug)                    |    74.74 |                   79.81 |
+ | 3(strong aug, schedule x2)   |    87.72 |                   86.29 |
+
+
+ |   r |   Acc | @epoch |
+ |-----+-------+--------|
+ | 0.1 | 75.59 |     83 |
+ | 0.2 | 78.13 |    107 |
+ | 0.3 | 79.81 |    117 |
+ 
+** TODO ImageNet
+
+
