@@ -13,6 +13,7 @@
  | aug                     |    79.41 |                   82.50 |
  | no aug                  |    74.74 |                   79.81 |
  | strong aug, schedule x2 |    87.72 |                   86.29 |
+ | aug, dropout[0.3]       |    78.15 |                         |
 
 #+CAPTION: 120 epochs training with different r
  |   r |   Acc | @epoch |
