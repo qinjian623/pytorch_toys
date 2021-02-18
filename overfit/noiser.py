@@ -17,6 +17,7 @@ class Noiser(nn.Module):
         for idx, p in enumerate(self._params):
             if self._anchor:
                 self._backup_params.append(p.detach().clone())
+            # TODO spatial gaussian noise
             n = (torch.randn(p.shape) * self._r).to(p.device)
             p.data += p.data*n
 

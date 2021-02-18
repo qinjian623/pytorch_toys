@@ -6,14 +6,15 @@
 
 ** CIFAR10
  #+CAPTION: Top 1 Accuracy on CIFAR10
- | No. HP Setting               | baseline | with Noise(anchor=True) |
- |------------------------------+----------+-------------------------|
- | 0(aug, weak ood)             |    67.65 |                   76.38 |
- | 1(aug)                       |    79.41 |                    82.5 |
- | 2(no aug)                    |    74.74 |                   79.81 |
- | 3(strong aug, schedule x2)   |    87.72 |                   86.29 |
+ | HP Setting              | baseline | with Noise(anchor=True) |
+ |-------------------------+----------+-------------------------|
+ | aug, ood test           |    67.65 |                   76.38 |
+ | aug                     |    80.09 |                   82.61 |
+ | aug                     |    79.41 |                   82.50 |
+ | no aug                  |    74.74 |                   79.81 |
+ | strong aug, schedule x2 |    87.72 |                   86.29 |
 
-
+#+CAPTION: 120 epochs training with different r
  |   r |   Acc | @epoch |
  |-----+-------+--------|
  | 0.1 | 75.59 |     83 |
