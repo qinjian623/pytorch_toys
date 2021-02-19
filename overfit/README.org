@@ -3,17 +3,17 @@
 #+AUTHOR: Jian QIN
 
 * Noiser(anchor=True)
-
 ** CIFAR10
  #+CAPTION: Top 1 Accuracy on CIFAR10
- | HP Setting              | baseline | with Noise(anchor=True) |
- |-------------------------+----------+-------------------------|
- | aug, ood test           |    67.65 |                   76.38 |
- | aug                     |    80.09 |                   82.61 |
- | aug                     |    79.41 |                   82.50 |
- | no aug                  |    74.74 |                   79.81 |
- | strong aug, schedule x2 |    87.72 |                   86.29 |
- | aug, dropout[0.3]       |    78.15 |                         |
+ | HP Setting              |          baseline | with Noise(anchor=True) |
+ |-------------------------+-------------------+-------------------------|
+ | aug, ood test           |             67.65 |                   76.38 |
+ | aug                     | 79.67/79.66/79.35 |       82.84/82.84/82.90 |
+ | aug                     |             79.41 |                   82.50 |
+ | no aug                  |             74.74 |                   79.81 |
+ | strong aug, schedule x2 |             87.72 |                   86.29 |
+ | aug, dropout[0.3]       |             78.15 |                         |
+ 
 
 #+CAPTION: 120 epochs training with different r
  |   r |   Acc | @epoch |
