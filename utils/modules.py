@@ -56,7 +56,7 @@ class Conv2dCrossAttention(nn.Module):
         # Eliminate spatial dim
         # Permute to (batch size, seq length, emb) x (bs, emb, seq)
         query = query.reshape(bs, -1, bh * bw)
-        key = key.reshape(bs, -1, ih * iw).permute(0, 2, 1)  # Still [bs, emb, seq], for bmm
+        key = key.reshape(bs, -1, ih * iw).permute(0, 2, 1)
         value = value.reshape(bs, -1, ih * iw)
 
         # Scores and outputs
