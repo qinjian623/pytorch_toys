@@ -2,6 +2,7 @@ import os
 import torch
 import torch.nn as nn
 import torchvision
+from torchvision.models import ResNet18_Weights
 import torchvision.transforms as transforms
 from torch.quantization import QuantStub, DeQuantStub, QConfig
 
@@ -73,7 +74,7 @@ q_backend = "qnnpack"
 qconfig = torch.quantization.get_default_qconfig(q_backend)
 torch.backends.quantized.engine = q_backend
 
-r18_o = torchvision.models.resnet18(True)
+r18_o = torchvision.models.resnet18(weights=ResNet18_Weights.DEFAULT)
 r18_o.eval()
 
 # Do NOT fuse inplaced relu

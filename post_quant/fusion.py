@@ -76,6 +76,8 @@ def validate(net, input_, cuda=True):
 
 if __name__ == '__main__':
     import torchvision
-    mbnet = torchvision.models.mobilenet_v2(True)
+    from torchvision.models import MobileNet_V2_Weights
+
+    mbnet = torchvision.models.mobilenet_v2(weights=MobileNet_V2_Weights.DEFAULT)
     mbnet.eval()
     print(validate(mbnet, torch.randn(32, 3, 224, 224), True))
