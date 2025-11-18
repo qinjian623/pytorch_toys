@@ -1,5 +1,6 @@
 import torch
 import torchvision
+from torchvision.models import ResNet101_Weights
 import torchvision.datasets as datasets
 import torchvision.transforms.transforms as transforms
 import sys
@@ -10,7 +11,7 @@ from post_quant.accuracy_test import validate
 
 
 def main(cali_db_path, validation_path):
-    model = torchvision.models.resnet101(True)
+    model = torchvision.models.resnet101(weights=ResNet101_Weights.DEFAULT)
     model.eval()
     if torch.cuda.is_available():
         model.cuda()
@@ -34,7 +35,7 @@ def main(cali_db_path, validation_path):
         pin_memory=True)
     q_model = fake_quant(model, dataset)
     torch.save(q_model.state_dict(), 'model.quant')
-    m = load_fake_quant_model(torchvision.models.resnet101(), 'model.quant')
+    m = load_fake_quant_model(torchvision.models.resnet101(weights=None), 'model.quant')
     m.cuda()
     fuse_module(model)
 

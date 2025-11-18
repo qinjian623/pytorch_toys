@@ -5,11 +5,12 @@ Check main.py or as below:
 ```python
 import torch
 import torchvision
+from torchvision.models import ResNet50_Weights
 import torchvision.datasets as datasets
 import torchvision.transforms.transforms as transforms
 from post_quant.fake_quantization import fake_quant, load_fake_quant_model
 
-model = torchvision.models.resnet50(True)
+model = torchvision.models.resnet50(weights=ResNet50_Weights.DEFAULT)
 model.eval()
 
 db = datasets.ImageFolder(
@@ -37,7 +38,9 @@ q_model = fake_quant(model, dataset)
 torch.save(model.state_dict(), 'model.quant') 
 
 # Reload model:
-m = load_fake_quant_model(torchvision.models.resnet50(), 'model.quant')
+m = load_fake_quant_model(
+    torchvision.models.resnet50(weights=None),
+    'model.quant')
 ```
 
 
