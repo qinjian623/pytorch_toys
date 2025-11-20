@@ -1,5 +1,7 @@
+import copy
 import torch
 import torch.nn as nn
+from torch.cuda.amp import autocast
 from utils.modules import DummyModule
 
 
@@ -56,21 +58,21 @@ def fuse_module(m):
 def validate(net, input_, cuda=True):
     net.eval()
     if cuda:
+        net = net.cuda()
         input_ = input_.cuda()
-        net.cuda()
-    # import time
-    # s = time.time()
-    a = net(input_)
+
+    fused_net = copy.deepcopy(net)
+    fuse_module(fused_net)
+    fused_net.eval()
+
+    with torch.no_grad():
+        with autocast(False):
+            a = net(input_)
+            b = fused_net(input_)
+
     if cuda:
         torch.cuda.synchronize()
-    # print(time.time() - s)
-    fuse_module(net)
-    # print(mbnet)
-    # s = time.time()
-    b = net(input_)
-    if cuda:
-        torch.cuda.synchronize()
-    # print(time.time() - s)
+
     return (a - b).abs().max().item()
 
 
