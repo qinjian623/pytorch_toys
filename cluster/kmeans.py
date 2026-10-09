@@ -50,7 +50,8 @@ def _kmeans_batch(obs: torch.Tensor,
             obs_id_in_cluster_i = obs_center_ids == i
             if obs_id_in_cluster_i.sum() == 0:
                 continue
-            obs_in_cluster = obs.index_select(0, obs_id_in_cluster_i.nonzero().squeeze())
+            obs_in_cluster = obs.index_select(
+                0, obs_id_in_cluster_i.nonzero(as_tuple=False).squeeze(1))
             c = obs_in_cluster.mean(dim=0)
             if norm_center:
                 c /= c.norm()
